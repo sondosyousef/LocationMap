@@ -25,21 +25,22 @@ import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
+    private GoogleMap mMap,mm;
+
 
     ArrayList<LatLng> arrayList = new ArrayList<>();
     LatLng Nablus = new LatLng(32.2211, 35.2544);
-    LatLng Sebastia =new LatLng(33.2, 35.2);
-    LatLng  MaqamJoseph  =new LatLng(33.2, 35.2);
-    LatLng  JacobWell   =new LatLng(-32.052700, 117.217350);
-    LatLng  MountGerizim  =new LatLng(33.2, 35.2);
-    LatLng oldCity  =new LatLng(32.3, 35.3);
-    LatLng KhanTraders =new LatLng(32.2, 35.2);
-    LatLng HadiPalace =new LatLng(32.2, 35.2);
-    LatLng LighthouseClock =new LatLng(32.4, 35.3);
-    LatLng NasrMosque =new LatLng(32.2, 35.2);
-    LatLng SabanaTouqan =new LatLng(32.2, 35.2);
-    LatLng Turkishbaths =new LatLng(32.2, 35.2);
+    LatLng Sebastia =new LatLng(32.27647333353645, 35.197966041977494);
+    LatLng  MaqamJoseph  =new LatLng(32.98266257486524, 35.49013604199582);
+    LatLng  JacobWell   =new LatLng(32.2095198043856, 35.28528382365309);
+    LatLng  MountGerizim  =new LatLng(32.1950011855653, 35.2641666633116);
+    LatLng oldCity  =new LatLng(32.219627887985354, 35.26149790571429);
+    LatLng KhanTraders =new LatLng(32.21994242430669, 35.26351422125106);
+    LatLng HadiPalace =new LatLng(32.22423573313789, 35.26209870877827);
+    LatLng LighthouseClock =new LatLng(32.21590147536036, 35.273750290930884);
+    LatLng NasrMosque =new LatLng(32.21891310852186, 35.26169907305228);
+    LatLng SabanaTouqan =new LatLng(32.21910978147422, 35.261180428486036);
+    LatLng Turkishbaths =new LatLng(32.22485493566722, 35.23628566214025);
 
     ArrayList<String> title = new ArrayList<>();
 
@@ -102,7 +103,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-
+         mm= googleMap;
+        LatLng myLocation = new LatLng(31.904945171998865, 35.20287782759413);
+         mm.addMarker(new MarkerOptions().position(myLocation).title("my Location"));
+         mm.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation,18f));
 
 
         for (int i = 0; i < arrayList.size(); i++) {
@@ -112,7 +116,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(new MarkerOptions().position(arrayList.get(i)).title(String.valueOf(title.get(i))));
 
             }
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arrayList.get(i),10));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(arrayList.get(i),12));
 
         }
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
